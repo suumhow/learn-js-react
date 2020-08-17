@@ -5,6 +5,8 @@
     <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
 </head>
 <body>
     <div id="app">
@@ -12,5 +14,51 @@
     </div>
     
 </body>
+    
+<script  type="text/babel"  > 
+    class App extends React.Component {
+        state = {  //state of component , properties
+            name: 'tom',
+            age: 35,
+        }
+        handleClick = (e) =>{  // need arrow function to pass this!!!!
+            console.log(e.target, this.state, this.state.name);
+            this.setState({ //setstate to change state
+                name: 'pierre',
+                age: 40,
+            });
+        }
+        handleMouseOver(e){
+            console.log(e) //show all the properties of event
+        }
+        handleChange = (e) =>{
+            console.log(e.target, e.value);
+            this.setState({
+                name: e.target.value
+            });
+        }
+        handleSubmit = e => {
+            e.preventDefault();
+            console.log(`form submitted: ${this.state.name}`);
+            
+        }
+        render() {
+            return (
+                <div className="app-content">
+                    <h1> Hey </h1> 
+                    <p>my name is {this.state.name} and i am {35}</p>   // render dynamic stuff 
+                    <button onClick={this.handleClick} >Click me </button>
+                    <button onMouseOver={this.handleMouseOver} >Hover me </button>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" onChange={this.handleChange} />
+                        <button>submit</button>
+                    </form>
+                </div>
 
+            )
+        }
+        
+    }
+    ReactDOM.render(<App />, document.getElementById('app'))
+</script>
 </html>
