@@ -38,11 +38,18 @@ const people = ['mario', 'luigi', 'tom']
 
 let html = '';
 
-people.forEach(person => {
-    html += `<li style="color:purple">${person}</li>`;
+people.forEach(i => {
+    html += `<li style="color:purple">${i}</li>`;
   
 })
 console.log(html);
 div.innerHTML = html;
 
 //use arrow function to keep the scope of this in a method!!!!
+
+// rest argument
+
+const printList = (...args) => { // ... turns arguments into a list
+    console.log(args)
+}
+printList("yo", "ya", "dfsg")
