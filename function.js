@@ -44,3 +44,5 @@ people.forEach(person => {
 })
 console.log(html);
 div.innerHTML = html;
+
+//use arrow function to keep the scope of this in a method!!!!
